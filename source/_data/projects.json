@@ -1,0 +1,17 @@
+[
+  {
+    "name":"candoo",
+    "url":"https://github.com/kgraves/candoo",
+    "desc":"A minimal activity based authorization middleware for connect/express"
+  },
+  {
+    "name":"emcee-craft",
+    "url":"https://github.com/mc-craft/emcee-craft",
+    "desc":"A library that supplements Prismarine's 'minecraft-data' data and provides utility functions to search said data."
+  },
+  {
+    "name":"open source",
+    "url":"https://github.com/kgraves?tab=repositories&type=fork",
+    "desc":"Various open source contributions"
+  }
+]
