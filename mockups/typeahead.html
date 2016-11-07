@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+  </head>
+  <body>
+    <h1>Typeahead mockup for new PH project</h1>
+    <div id="typeahead-demo">
+      <input class="typeahead" type="text" placeholder="Search for a file or folder here...">
+    </div>
+
+    <script type="text/javascript">
+
+      $(function() {
+        var substringMatcher = function(objs) {
+          return function findMatches(q, cb) {
+            var matches, substringRegex;
+
+            // an array that will be populated with substring matches
+            matches = [];
+
+            // regex used to determine if a string contains the substring `q`
+            substrRegex = new RegExp(q, 'i');
+
+            // iterate through the pool of strings and for any string that
+            // contains the substring `q`, add it to the `matches` array
+            $.each(objs, function(i, obj) {
+              if (substrRegex.test(obj.value)) {
+                matches.push(obj);
+              }
+            });
+
+            cb(matches);
+          };
+        };
+
+        var filepaths = [
+          {
+            value: 'docs/product_literature/filters/Balston_Filtration_Products_for_the_Laboratory_-_Bulletin_1',
+          },
+          {
+            value: 'docs/product_literature/filters/Balston_Filtration_Products_for_the_Laboratory_-_Bulletin_2',
+          },
+          {
+            value: 'docs/product_literature/filters/Balston_Filtration_Products_for_the_Laboratory_-_Bulletin_3',
+          },
+          {
+            value: 'docs/product_literature/filters/Balston_Filtration_Products_for_the_Laboratory_-_Bulletin_4',
+          },
+          {
+            value: 'docs/product_literature/filters/Balston_Filtration_Products_for_the_Laboratory_-_Bulletin_5',
+          },
+          {
+            value: 'docs/product_literature/filters/Balston_Filtration_Products_for_the_Laboratory_-_Bulletin_6',
+          }
+        ];
+
+        $('.typeahead').typeahead(null, {
+          name: 'filepaths',
+          display: 'value',
+          source: substringMatcher(filepaths),
+          templates: {
+            empty: [
+              '<div class="empty-message">',
+                'unable to find any Best Picture winners that match the current query',
+              '</div>'
+            ].join('\n'),
+            suggestion:
+              Handlebars.compile('<div><div class="suggestion"><strong>{{value}}</strong></div> – <div class="suggestion-checkbox"><input type="checkbox"></div></div>')
+            /**
+            suggestion: function(data) {
+              debugger;
+              return '<div><strong>' +
+                  data.value +
+                  '</strong> - Checkbox here!</div>';
+            }
+            */
+          }
+        });
+
+      });
+    </script>
+  </body>
+</html>
