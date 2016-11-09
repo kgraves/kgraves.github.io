@@ -8,7 +8,7 @@
   "scripts": {
     "assets": "cp -r ./assets/images/* ./public/images/",
     "build": "hexo clean && hexo generate && npm run assets",
-    "deploy": "git subtree push --prefix public origin master"
+    "deploy": "GIT_DEPLOY_DIR=public GIT_DEPLOY_BRANCH=master ./assets/scripts/deploy.sh"
   },
   "dependencies": {
     "hexo": "3.2.0",
