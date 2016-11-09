@@ -6,6 +6,7 @@
     "version": "3.2.0"
   },
   "scripts": {
+    "assets": "cp -r ./assets/images/* ./public/images/",
     "deploy": "git subtree push --prefix public origin master"
   },
   "dependencies": {
