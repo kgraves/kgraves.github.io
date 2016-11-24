@@ -86,8 +86,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 plugins:
-  disqus_shortname: kiwikiwi
-  google_analytics: UA-KIWI-1
+  disqus_shortname: therealkg
 
 ## Themes: https://hexo.io/themes/
 theme: cactus-dark
